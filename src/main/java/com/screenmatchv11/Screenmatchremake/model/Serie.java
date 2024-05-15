@@ -3,6 +3,7 @@ package com.screenmatchv11.Screenmatchremake.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.OptionalDouble;
 
 @Entity
@@ -16,11 +17,15 @@ public class Serie {
     private Integer totalTemporadas;
     private Double evaluacion;
     private String poster;
+    @Enumerated(EnumType.STRING)
     private Categoria genero;
     private String actores;
     private String sinopsis;
+    @Transient
+    private List<Episodio> episodios;
 
 
+    public Serie () {}
     public Serie(DatosSerie datosSerie) {
         this.titulo = datosSerie.titulo();
         this.totalTemporadas = datosSerie.totalTemporadas();
@@ -32,7 +37,6 @@ public class Serie {
         
         };
 
-
     @Override
     public String toString() {
         return "Serie{" +
@@ -43,6 +47,14 @@ public class Serie {
                 ", genero= " + genero +
                 ", actores= '" + actores + '\'' +
                 ", sinopsis='" + sinopsis + '\'';
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 
     public String getTitulo() {
