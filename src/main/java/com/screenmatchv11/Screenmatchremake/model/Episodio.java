@@ -1,14 +1,21 @@
 package com.screenmatchv11.Screenmatchremake.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+@Entity
+@Table(name = "episodios")
 public class Episodio {
     private Integer temporada;
     private String titulo;
     private Integer numeroEpisodio;
     private Double evaluacion;
     private LocalDate fechaDeLanzamiento;
+
+    private Serie serie;
 
     public Integer getTemporada() {
         return temporada;
@@ -50,6 +57,14 @@ public class Episodio {
         this.fechaDeLanzamiento = fechaDeLanzamiento;
     }
 
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+
     @Override
     public String toString() {
         return
@@ -76,4 +91,6 @@ public class Episodio {
         }
 
     }
+
+
 }

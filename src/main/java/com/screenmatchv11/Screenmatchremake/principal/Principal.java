@@ -41,6 +41,8 @@ public class Principal {
                     
                     7 - Filtrar series por temporadas y evaluación
                     
+                    8 - Buscar episodio por titulo
+                    
                     0 - Salir
                     """;
             System.out.printf(menu);
@@ -68,6 +70,9 @@ public class Principal {
                     break;
                 case 7:
                     filtrarSeriesPorTemporadaYEvaluacion();
+                    break;
+                case 8:
+                    buscarEpisodiosPorTitulo();
                     break;
                 case 0:
                     System.out.println("Cerrando la aplicación...");
@@ -172,5 +177,13 @@ public class Principal {
         List<Serie> filtroSeries = repositorio.seriesPorTemporadaYEvaluacion(totalTemporadas, evaluacion);
         System.out.println("*** Series filtradas ***");
         filtroSeries.forEach(s -> System.out.println(s.getTitulo() + "  - evaluacion: " + s.getEvaluacion()));
+    }
+
+    private void buscarEpisodiosPorTitulo() {
+        System.out.println("Escribe el nombre del episodio que deseas buscar");
+        var nombreEpisodio = teclado.nextLine();
+        List<Episodio> episodiosEncontrados = repositorio.episodiosPorNombre(nombreEpisodio);
+
+        episodiosEncontrados.forEach(e -> System.out.printf("Serie: %s Temporada %s Episorio %s Evaluación %s\n", e.getSerie(), e.getTemporada(), e.getNumeroEpisodio(), e.getEvaluacion()));
     }
 }
