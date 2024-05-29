@@ -1,7 +1,7 @@
 package com.screenmatchv11.Screenmatchremake.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -9,13 +9,20 @@ import java.time.format.DateTimeParseException;
 @Entity
 @Table(name = "episodios")
 public class Episodio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
     private Integer temporada;
     private String titulo;
     private Integer numeroEpisodio;
     private Double evaluacion;
     private LocalDate fechaDeLanzamiento;
 
+    @ManyToOne
     private Serie serie;
+
+    public Episodio() {}
+
 
     public Integer getTemporada() {
         return temporada;
