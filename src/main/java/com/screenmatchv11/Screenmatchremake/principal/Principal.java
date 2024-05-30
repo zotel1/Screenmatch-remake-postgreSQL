@@ -4,6 +4,7 @@ import com.screenmatchv11.Screenmatchremake.model.*;
 import com.screenmatchv11.Screenmatchremake.repository.SerieRepository;
 import com.screenmatchv11.Screenmatchremake.service.ConsumoAPI;
 import com.screenmatchv11.Screenmatchremake.service.ConvierteDatos;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,7 +13,8 @@ public class Principal {
     private Scanner teclado = new Scanner(System.in);
     private ConsumoAPI consumoAPI = new ConsumoAPI();
     private final String URL_BASE = "https://www.omdbapi.com/?t=";
-    private final String API_KEY = "TU-APIKEY-OMDB";
+    @Value("${spring.datasource.passwordomdb}")
+    private final String API_KEY = System.getenv("TU-APIKEY-OMDB");
     private ConvierteDatos conversor = new ConvierteDatos();
     private List<DatosSerie> datosSeries = new ArrayList<>();
     private SerieRepository repositorio;

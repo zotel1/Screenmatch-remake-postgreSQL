@@ -26,7 +26,8 @@ public class Serie {
 
 
     public Serie () {}
-    public Serie(DatosSerie datosSerie) {
+
+    public Serie(DatosSerie datosSerie){
         this.titulo = datosSerie.titulo();
         this.totalTemporadas = datosSerie.totalTemporadas();
         this.evaluacion = OptionalDouble.of(Double.valueOf(datosSerie.evaluacion())).orElse(0);
@@ -34,19 +35,19 @@ public class Serie {
         this.genero = Categoria.fromString(datosSerie.genero().split(",")[0].trim());
         this.actores = datosSerie.actores();
         this.sinopsis = datosSerie.sinopsis();
-        
-        };
+    }
 
     @Override
     public String toString() {
-        return "Serie{" +
-                "titulo= '" + titulo + '\'' +
-                ", totalTemporadas= " + totalTemporadas +
-                ", evaluacion= " + evaluacion +
-                ", poster= '" + poster + '\'' +
-                ", genero= " + genero +
-                ", actores= '" + actores + '\'' +
-                ", sinopsis='" + sinopsis + '\'';
+        return ", genero=" + genero +
+                ", titulo='" + titulo + '\'' +
+                ", totalTemporadas=" + totalTemporadas +
+                ", evaluacion=" + evaluacion +
+                ", poster='" + poster + '\'' +
+                ", actores='" + actores + '\'' +
+                ", sinopsis='" + sinopsis + '\'' +
+                ", episodios=" + episodios +
+                '}';
     }
 
     public Long getId() {
